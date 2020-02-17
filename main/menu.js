@@ -5,6 +5,7 @@ var template = [
         submenu: [
             {
                 label: '打开新窗口',
+                accelerator:'ctrl+n', //快捷键
                 click: () => {
                     win = new BrowserWindow({
                         width: 500,
