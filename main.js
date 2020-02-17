@@ -10,6 +10,7 @@ app.on('ready', ()=>{
         height:500, 
         webPreferences:{nodeIntegration:true} //全量启用node功能
     })
+    require('./main/menu')
     mainWindow.loadFile('index.html')
     mainWindow.on('closed', ()=>{
         mainWindow = null
