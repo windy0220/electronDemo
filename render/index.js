@@ -59,3 +59,8 @@ linkDom.onclick = function(e){
     var url = linkDom.getAttribute('href')
     shell.openExternal(url)
 }
+
+//打开子窗口
+document.querySelector('.openSubWindow').onclick = function(){
+    window.open('https://bigma.cc')
+}
