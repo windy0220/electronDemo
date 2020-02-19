@@ -1,4 +1,5 @@
 var fs = require('fs')
+var {shell} = require('electron')
 const BrowserWindow = require('electron').remote.BrowserWindow //引入electron remote
 window.onload = function () {
     var btn = this.document.querySelector('#btn')
@@ -48,3 +49,13 @@ window.addEventListener('contextmenu', function(e){
     e.preventDefault()
     rm.popup({window:remote.getCurrentWindow()})
 })
+
+// 使用shell在浏览器中打开链接
+var linkDom = document.querySelector('.link')
+
+linkDom.onclick = function(e){
+    
+    e.preventDefault()
+    var url = linkDom.getAttribute('href')
+    shell.openExternal(url)
+}
