@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子窗口通信</title>
+</head>
+<body>
+    <button class="sub-btn">向父窗口传递信息</button>
+    <script>
+        var subDom = document.querySelector('.sub-btn');
+        subDom.onclick = ()=>{
+            window.opener.postMessage('This is sub window messages')
+        }
+    </script>
+</body>
+</html>

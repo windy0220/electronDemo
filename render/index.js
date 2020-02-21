@@ -64,3 +64,12 @@ linkDom.onclick = function(e){
 document.querySelector('.openSubWindow').onclick = function(){
     window.open('https://bigma.cc')
 }
+
+document.querySelector('.openSubWindowMessage').onclick = function(){
+    window.open('./sub.html')
+    
+}
+
+window.addEventListener('message', function(res){
+    document.querySelector('.subWindowMessage').innerHTML = JSON.stringify(res.data)
+})
