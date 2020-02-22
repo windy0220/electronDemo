@@ -1,6 +1,7 @@
 var fs = require('fs')
 var {shell} = require('electron')
 const BrowserWindow = require('electron').remote.BrowserWindow //引入electron remote
+const {dialog} = require('electron').remote
 window.onload = function () {
     var btn = this.document.querySelector('#btn')
     var doit = this.document.querySelector('#doit')
@@ -73,3 +74,21 @@ document.querySelector('.openSubWindowMessage').onclick = function(){
 window.addEventListener('message', function(res){
     document.querySelector('.subWindowMessage').innerHTML = JSON.stringify(res.data)
 })
+
+// 打开文件窗口
+var loadImgBtn =  document.querySelector('#loadImg')
+loadImgBtn.onclick = function(){
+    dialog.showOpenDialog({
+        title:'选择图片', //窗口的title
+        defaultPath:'zhubaba.jpg', //默认选择的文件
+        buttonLabel:'打开猪爸爸', //自定义窗口打开按钮的文字
+        filters:[ //过滤器
+            {name:'img', extensions:['jpg']}
+        ]
+    }).then(res=>{
+        console.log(res)
+        document.querySelector('.imgBox').setAttribute('src', res.filePaths[0])
+    }).catch(err=>{
+        console.log(err)
+    })
+}
