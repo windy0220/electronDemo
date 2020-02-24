@@ -16,7 +16,7 @@ app.on('ready', ()=>{
     var BrowserView = electron.BrowserView
     var view = new BrowserView()
     mainWindow.setBrowserView(view)
-    view.setBounds({x:0, y:120, width:800, height:680}) //设置嵌入的位置及宽高
+    view.setBounds({x:0, y:500, width:800, height:680}) //设置嵌入的位置及宽高
     view.webContents.loadURL('https://bigma.cc')
 
     require('./main/menu')
