@@ -1,36 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello World</title>
+    <style>
+        button {
+            background: #34dbb9;
+            background-image: linear-gradient(to bottom, #34dbb9, #28a6b9);
+            border: none;
+            font-family: 微软雅黑;
+            color: #ffffff;
+            font-size: 19px;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all .2s;
+            appearance: none;
+            outline: none;
+        }
+        hr{
+            border: 1px solid #b6cac5;
+        }
+
+        button:hover {
+            background: #34dcb6;
+            background-image: linear-gradient(to bottom, #34dcb6, #34b6db);
+            color: #ffffff;
+            text-decoration: none;
+        }
+    </style>
 </head>
+
 <body>
-   <button id="btn">载入文件内容</button>
-   <div id="doit"></div>
-   <hr>
-   <button id="open">打开新的窗口</button>
-   <hr>
+    <button id="btn">载入文件内容</button>
+    <div id="doit"></div>
+    <hr>
+    <button id="open">打开新的窗口</button>
+    <hr>
 
-   <span>使用shell在浏览器中打开链接</span>
-   <a class="link" href="https://bigma.cc">My Blog | bigma.cc</a>
+    <span>使用shell在浏览器中打开链接</span>
+    <a class="link" href="https://bigma.cc">My Blog | bigma.cc</a>
 
-   <hr>
-   <button class="openSubWindow">打开子窗口</button>
+    <hr>
+    <button class="openSubWindow">打开子窗口</button>
 
-   <hr>
-   <button class="openSubWindowMessage">打开通信子窗口</button>
-   <div class="subWindowMessage"></div>
+    <hr>
+    <button class="openSubWindowMessage">打开通信子窗口</button>
+    <div class="subWindowMessage"></div>
 
-   <hr>
-   <!-- 打开文件窗口 -->
-   <button id="loadImg">打开图片</button>
-   <img class="imgBox" style="width: 100%;"></img>
+    <hr>
+    <!-- 打开文件窗口 -->
+    <button id="loadImg">打开图片</button>
+    <img class="imgBox" style="width: 100%;"></img>
 
-   <hr>
-   <!-- 保存按钮 -->
-   <button id="saveBtn">保存</button>
-   
-   <script src="render/index.js"></script>
+    <hr>
+    <!-- 保存按钮 -->
+    <button id="saveBtn">保存</button>
+
+    <script src="render/index.js"></script>
 </body>
+
 </html>
