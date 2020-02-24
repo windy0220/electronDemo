@@ -1,7 +1,7 @@
 var fs = require('fs')
-var {shell} = require('electron')
+var { shell } = require('electron')
 const BrowserWindow = require('electron').remote.BrowserWindow //引入electron remote
-const {dialog} = require('electron').remote
+const { dialog } = require('electron').remote
 window.onload = function () {
     var btn = this.document.querySelector('#btn')
     var doit = this.document.querySelector('#doit')
@@ -46,49 +46,62 @@ var rightMenuTemplate = [
 var rm = remote.Menu.buildFromTemplate(rightMenuTemplate)
 
 // 监听右键
-window.addEventListener('contextmenu', function(e){
+window.addEventListener('contextmenu', function (e) {
     e.preventDefault()
-    rm.popup({window:remote.getCurrentWindow()})
+    rm.popup({ window: remote.getCurrentWindow() })
 })
 
 // 使用shell在浏览器中打开链接
 var linkDom = document.querySelector('.link')
 
-linkDom.onclick = function(e){
-    
+linkDom.onclick = function (e) {
+
     e.preventDefault()
     var url = linkDom.getAttribute('href')
     shell.openExternal(url)
 }
 
 //打开子窗口
-document.querySelector('.openSubWindow').onclick = function(){
+document.querySelector('.openSubWindow').onclick = function () {
     window.open('https://bigma.cc')
 }
 
-document.querySelector('.openSubWindowMessage').onclick = function(){
+document.querySelector('.openSubWindowMessage').onclick = function () {
     window.open('./sub.html')
-    
+
 }
 
-window.addEventListener('message', function(res){
+window.addEventListener('message', function (res) {
     document.querySelector('.subWindowMessage').innerHTML = JSON.stringify(res.data)
 })
 
 // 打开文件窗口
-var loadImgBtn =  document.querySelector('#loadImg')
-loadImgBtn.onclick = function(){
+var loadImgBtn = document.querySelector('#loadImg')
+loadImgBtn.onclick = function () {
     dialog.showOpenDialog({
-        title:'选择图片', //窗口的title
-        defaultPath:'zhubaba.jpg', //默认选择的文件
-        buttonLabel:'打开猪爸爸', //自定义窗口打开按钮的文字
-        filters:[ //过滤器
-            {name:'img', extensions:['jpg']}
+        title: '选择图片', //窗口的title
+        defaultPath: 'zhubaba.jpg', //默认选择的文件
+        buttonLabel: '打开猪爸爸', //自定义窗口打开按钮的文字
+        filters: [ //过滤器
+            { name: 'img', extensions: ['jpg'] }
         ]
-    }).then(res=>{
+    }).then(res => {
         console.log(res)
         document.querySelector('.imgBox').setAttribute('src', res.filePaths[0])
-    }).catch(err=>{
+    }).catch(err => {
+        console.log(err)
+    })
+}
+
+// 保存按钮
+var saveBtn = document.querySelector('#saveBtn')
+saveBtn.onclick = () => {
+    dialog.showSaveDialog({
+        title: '保存文件'
+    }).then(res => {
+        console.log(res)
+        fs.writeFileSync(res.filePath, 'test text')
+    }).catch(err => {
         console.log(err)
     })
 }
