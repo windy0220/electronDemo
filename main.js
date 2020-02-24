@@ -10,7 +10,7 @@ app.on('ready', ()=>{
         height:500, 
         webPreferences:{nodeIntegration:true} //全量启用node功能
     })
-    // mainWindow.webContents.openDevTools() // 打开调试模式
+    mainWindow.webContents.openDevTools() // 打开调试模式
 
     //在窗口嵌入页面 BrowserView
     var BrowserView = electron.BrowserView

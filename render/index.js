@@ -109,3 +109,18 @@ saveBtn.onclick = () => {
         console.log(err)
     })
 }
+
+// 消息对话框
+var messageBtn = document.querySelector('#messageBtn')
+messageBtn.onclick = () => {
+    dialog.showMessageBox({
+        type:'warning', // 图标样式 none、info、error、question和warning
+        title: '您确定吗？',
+        message:'删除一条消息',
+        buttons:['不删了', '没问题！'] //按钮数组
+    }).then(res => {
+        console.log(res.response) //按钮的数组下标
+    }).catch(err => {
+        console.log(err)
+    })
+}
