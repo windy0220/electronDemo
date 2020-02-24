@@ -97,7 +97,11 @@ loadImgBtn.onclick = function () {
 var saveBtn = document.querySelector('#saveBtn')
 saveBtn.onclick = () => {
     dialog.showSaveDialog({
-        title: '保存文件'
+        title: '保存文件',
+        defaultPath: 'text.txt', //默认选择的文件
+        filters: [ //过滤器
+            { name: 'txt', extensions: ['txt'] }
+        ]
     }).then(res => {
         console.log(res)
         fs.writeFileSync(res.filePath, 'test text')
