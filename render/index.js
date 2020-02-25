@@ -124,3 +124,13 @@ messageBtn.onclick = () => {
         console.log(err)
     })
 }
+
+// 发送系统通知
+var sendNotifi = document.querySelector('#sendNotification')
+var notifiOpt = {
+    title:'来订单了！',
+    body:'王先生下单199元'
+}
+sendNotifi.onclick = ()=>{
+    new window.Notification(notifiOpt.title, notifiOpt)
+}
