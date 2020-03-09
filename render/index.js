@@ -114,10 +114,10 @@ saveBtn.onclick = () => {
 var messageBtn = document.querySelector('#messageBtn')
 messageBtn.onclick = () => {
     dialog.showMessageBox({
-        type:'warning', // 图标样式 none、info、error、question和warning
+        type: 'warning', // 图标样式 none、info、error、question和warning
         title: '您确定吗？',
-        message:'删除一条消息',
-        buttons:['不删了', '没问题！'] //按钮数组
+        message: '删除一条消息',
+        buttons: ['不删了', '没问题！'] //按钮数组
     }).then(res => {
         console.log(res.response) //按钮的数组下标
     }).catch(err => {
@@ -128,9 +128,19 @@ messageBtn.onclick = () => {
 // 发送系统通知
 var sendNotifi = document.querySelector('#sendNotification')
 var notifiOpt = {
-    title:'来订单了！',
-    body:'王先生下单199元'
+    title: '来订单了！',
+    body: '王先生下单199元'
 }
-sendNotifi.onclick = ()=>{
+sendNotifi.onclick = () => {
     new window.Notification(notifiOpt.title, notifiOpt)
 }
+
+// 断网提示功能 似乎要把所有连接的网卡禁用才能起作用
+window.addEventListener('online', function() {
+    new window.Notification('已联机', {title:'已联机!', body:'数据继续传输'})
+    // alert('已联机')
+})
+window.addEventListener('offline', function() {
+    new window.Notification('已断开网络', {title:'已断开网络!', body:'数据传输中断'})
+    // alert('已断开网络')
+})
