@@ -144,3 +144,12 @@ window.addEventListener('offline', function() {
     new window.Notification('已断开网络', {title:'已断开网络!', body:'数据传输中断'})
     // alert('已断开网络')
 })
+
+// 复制功能
+const {clipboard} = require('electron')
+const code = document.querySelector('#code')
+const codeBtn = document.querySelector('#code-btn')
+codeBtn.onclick = function(){
+    clipboard.writeText(code.innerHTML)
+    alert('copy success');
+}

@@ -44,4 +44,5 @@ app.on('ready', ()=>{
         globalShortcut.unregister('ctrl+e') //注销单独快捷键
         globalShortcut.unregisterAll() //注销所有快捷键
     })
+    
 })
