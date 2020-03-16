@@ -3,6 +3,9 @@ var electron = require('electron')
 var app = electron.app
 var BrowserWindow = electron.BrowserWindow
 
+var globalShortcut = electron.globalShortcut
+var {shell} = require('electron')
+
 var mainWindow = null //声明要打开的窗口
 
 app.on('ready', ()=>{
@@ -23,5 +26,22 @@ app.on('ready', ()=>{
     mainWindow.loadFile('index.html')
     mainWindow.on('closed', ()=>{
         mainWindow = null
+    })
+
+    // 注册全局快捷键
+    globalShortcut.register('ctrl+e', ()=>{
+        shell.openExternal('https://www.baidu.com')
+    })
+
+    //检查快捷键是否注册成功
+    var isRegistered = globalShortcut.isRegistered('ctrl+e')
+    if(isRegistered){
+        console.log('Register Success!')
+    }
+
+    //注销快捷键
+    app.on('will-quit', ()=>{
+        globalShortcut.unregister('ctrl+e') //注销单独快捷键
+        globalShortcut.unregisterAll() //注销所有快捷键
     })
 })
